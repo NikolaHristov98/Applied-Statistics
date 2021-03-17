@@ -16,6 +16,25 @@ Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by press
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+```{r}
+vec <- rnorm(10000)
+
+median(vec)
+
+cutoff <- median(vec)+3*mad(vec)
+m<-mean(vec)
+dispersion <- sd(vec)
+
+vecB <- c(abs(vec)<3*cutoff)
+
+res <- which(vecB %in% FALSE)
+
+
+```
+
+
 ```{r}
 f <- function(){
   return(rnorm(1,0,2)*(9/10)+rnorm(1, 10,3))
@@ -24,7 +43,7 @@ f <- function(){
 main <- function(){
   vals = c();
   
-  for(i in 1:1000){
+  for(i in 1:100000){
     a = f();
     vals = append(vals, a);
   }
@@ -33,5 +52,49 @@ main <- function(){
 }
 
 v=main()
+hist(v)
+nes <-median(v)+3*mad(v)
+
+b <- c(abs(v)>=3*nes)
+
+c <- which(b %in% nes)
+
+```
+
+
+
+```{r}
+x = c(8,3,3,7,15,9,12,4,9,10,5,1);
+col = c(1,3,5,7,9,11)
+matr = matrix(x, 6,2)
+
+matr <- cbind(matr, col)
+rownames(matr)<-c("r1","r2","r3","r4","r5","r6")
+order(matr[,1])
+matr<-matr[order(matr[,1],matr[,2]),]
+
+```
+```{r}
+rand.Circle<-function(n,x0 = 0,y0 = 0,r){
+  ro <- runif(n,0,r)
+  phi <- runif(n,0,2*pi)
+  
+  x <- x0+ro*cos(phi)
+  y <- y0+ro*sin(phi)
+  
+  return(cbind(x,y))
+}
+
+plot(rand.Circle(1000000,0,0,1))
+```
+```{r}
+piAprox<-function(n){
+  x <- runif(n,0,2)
+  y <- runif(n,0,2)
+  
+  z <- sqrt(x^2+y^2)
+  
+  
+}
 ```
 
