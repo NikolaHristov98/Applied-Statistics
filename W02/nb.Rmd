@@ -37,13 +37,13 @@ res <- which(vecB %in% FALSE)
 
 ```{r}
 f <- function(){
-  return(rnorm(1,0,2)*(9/10)+rnorm(1, 10,3))
+  (1/10)*return(rnorm(1,0,2)*(9/10)+rnorm(1, 10,3))
 }
 
 main <- function(){
   vals = c();
   
-  for(i in 1:100000){
+  for(i in 1:10000){
     a = f();
     vals = append(vals, a);
   }

@@ -1,0 +1,48 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+data(sleep)
+
+sleep_wide<-data.frame(
+  ID=1:10,
+  group1=sleep$extra[1:10],
+  group2=sleep$extra[11:20]
+)
+
+count.plus=sum((sleep_wide$group1-sleep_wide$group2)>=0);
+
+binom.test(count.plus, 10,0.5,alternative=c("two.sided"))
+
+```
+
+```{r}
+install.packages("UsingR", dependencies=TRUE)
+```
+```{r}
+data("pi2000",package="UsingR")
+t=table(pi2000)
+barplot(t/2000)
+abline(h=1/10,col=2,lty=2,lwd=3)
+```
+
+```{r}
+titanic <- read.csv("https://raw.githubusercontent.com/natigeorgieva/Applied_Statistics_2021/main/week3/Data/Titanic.csv")
+head(titanic)
+```
+
